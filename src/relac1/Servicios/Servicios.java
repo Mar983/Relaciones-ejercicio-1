@@ -9,38 +9,46 @@ import relac1.atributos.Persona;
 public class Servicios {
     Scanner leer = new Scanner(System.in).useDelimiter("\n");
     public ArrayList <Persona> gente = new ArrayList<>();
-    ArrayList <Perro> perro = new ArrayList<>();
+    ArrayList <Perro> mascotasAdoptadas = new ArrayList();
     
-    public void crearPersona(){
-        System.out.println("Nombre, Apellido, Edad y DNI:");
-        String nombre = leer.next();
-        String apellido = leer.next();
-        int edad = leer.nextInt();
-        int dni = leer.nextInt();
-        //cuando cargamos los datos de la persona, directamente se le pedira elegir un perro
-        gente.add(new Persona(nombre,apellido,edad,dni,asignarPerro(nombre)));      
-    }
-    
-    public void crearPerro(){
+    public void crearPerro(Perro x){
         System.out.println("Nombre, raza, edad, tamanio:");
         String nombre= leer.next();
         String raza = leer.next();
         int edad= leer.nextInt();
         String tamanio = leer.next();
-        perro.add(new Perro(nombre,raza,edad,tamanio));
+        x.pichus.add(new Perro(nombre,raza,edad,tamanio));
     }
     
-    public Perro asignarPerro(String nombre){
-        for (Perro perro2 : perro) {
-            System.out.println(perro2.toString());
+    public void crearPersona(Perro b){
+        System.out.println("Nombre, Apellido, Edad y DNI:");
+        String nombre = leer.next();
+        String apellido = leer.next();
+        int edad = leer.nextInt();
+        int dni = leer.nextInt();
+        //cuando cargamos los datos de la persona, directamente se le pedira elegir un pichu
+        gente.add(new Persona(nombre,apellido,edad,dni,asignarPerro(b))); 
+    }
+
+    public Perro asignarPerro(Perro b){
+        System.out.println("");
+        System.out.println("Mascotas disponibles:");
+        for (Perro can : b.getPichus()) {
+            System.out.println("Mascota: "+can.toString());
         }
-        System.out.println("Para la persona " +nombre+" Ingrese el nombre del perro:");
+        System.out.println("");
+        System.out.println("Elija la mascota para esta persona: (ingrese el nombre de la mascota)");
         String respuesta = leer.next();
-        for (Perro perro1 : perro) {
-            if (respuesta.toLowerCase().equals(perro1.nombre)) {
-                perro.remove(perro1);
-                return perro1;             
-            }
-        } return null;
-    } 
+        String error = "";
+        for (Perro aux : b.pichus) {
+            if (respuesta.equals(aux.getNombre())){              
+                b.pichus.remove(aux);
+                return aux;
+            } else {
+                error = ("No esta disponible esa mascota");
+            }              
+        }
+        System.out.println(error);
+        return null;
+    }
 }

@@ -61,8 +61,6 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombrePersona=" + nombrePersona + ", apellidoPersona=" + apellidoPersona + ", edad=" + edad + ", DNI=" + DNI + ", mascota=" + mascota + '}';
-    }
-    
-    
+        return "Persona: " + nombrePersona + " y su mascota: " + mascota;
+    }   
 }

@@ -1,11 +1,14 @@
 
 package relac1.atributos;
 
+import java.util.ArrayList;
+
 public class Perro {
     public String nombre;
     public String raza;
     public Integer edad;
     public String tamanio;
+    public ArrayList <Perro> pichus = new ArrayList<>();
 
     public Perro() {
     }
@@ -48,10 +51,18 @@ public class Perro {
     public void setTamanio(String tamanio) {
         this.tamanio = tamanio;
     }
+    
+    public ArrayList<Perro> getPichus() {
+        return pichus;
+    }
+
+    public void setPichus(ArrayList<Perro> pichus) {
+        this.pichus = pichus;
+    }
 
     @Override
     public String toString() {
-        return "Perro{" + "nombre=" + nombre + ", raza=" + raza + ", edad=" + edad + ", tamanio=" + tamanio + '}';
+        return (nombre + ", raza: " + raza + ", edad: " + edad + ", tamanio: " + tamanio);
     }
     
     
